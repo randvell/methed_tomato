@@ -1,18 +1,16 @@
-let count = 0;
-const imp = ['default', 'important', 'so-so'];
-document
-  .querySelector('.button-importance')
-  .addEventListener('click', ({ target }) => {
-    count += 1;
-    if (count >= imp.length) {
-      count = 0;
-    }
+import './importance.js';
+import './counter.js';
+import { Timer } from './timer.js';
+import { Task } from './task.js';
 
-    for (let i = 0; i < imp.length; i += 1) {
-      if (count === i) {
-        target.classList.add(imp[i]);
-      } else {
-        target.classList.remove(imp[i]);
-      }
-    }
-  });
+const timer = new Timer({ time: 2 });
+const task = new Task('Test task');
+
+timer.add(task);
+timer.setActiveTask(task.getId());
+
+// Специально пока оставил возможность запуска несколько раз,
+// чтобы показать увеличение паузы
+timer.startTask();
+timer.startTask();
+timer.startTask();

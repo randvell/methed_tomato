@@ -1,4 +1,4 @@
-class Counter {
+export class Counter {
   #increment = 0;
   #value;
   #name;
@@ -27,9 +27,9 @@ class Counter {
   }
 }
 
-const counter = new Counter('one');
-console.log('One:', counter.getCount());
-counter.addCount();
-console.log('++One:', counter.getCount());
-counter.setName('two');
-console.log('Now it is not one, but:', counter.getName());
+// const counter = new Counter('one');
+// console.log('One:', counter.getCount());
+// counter.addCount();
+// console.log('++One:', counter.getCount());
+// counter.setName('two');
+// console.log('Now it is not one, but:', counter.getName());

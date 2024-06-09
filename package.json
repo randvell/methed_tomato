@@ -7,6 +7,9 @@
     "@babel/preset-env": "^7.24.4",
     "babel-loader": "^9.1.3",
     "css-loader": "^7.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.29.1",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
@@ -26,7 +29,6 @@
     "clear": "rd /s /q dist"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "eslint": "^9.4.0"
+    "@babel/polyfill": "^7.12.1"
   }
 }
