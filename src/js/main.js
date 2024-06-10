@@ -1,13 +1,14 @@
 import './importance.js';
 import './counter.js';
 import { Timer } from './timer.js';
-import { Task } from './task.js';
+import { ImportantTask, StandardTask } from './task.js';
 
-const timer = new Timer({ time: 2 });
-const task = new Task('Test task');
+const timer = Timer.getInstance({ time: 2 });
+const taskStandard = new StandardTask('Test task');
+const taskImportant = new ImportantTask('Very important');
 
-timer.add(task);
-timer.setActiveTask(task.getId());
+timer.add(taskStandard).add(taskImportant);
+timer.setActiveTask(taskImportant.getId());
 
 // Специально пока оставил возможность запуска несколько раз,
 // чтобы показать увеличение паузы

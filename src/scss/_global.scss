@@ -104,14 +104,14 @@ fieldset {
   transition: background-color 0.3s ease-in-out;
 }
 
-.button-importance.default {
+.button-importance.standard {
   background-color: #a9bb30;
   &:hover {
     background-color: darker(#a9bb30, 1);
   }
 }
 
-.button-importance.so-so {
+.button-importance.minor {
   background-color: #f3ec34;
   &:hover {
     background-color: darker(#f3ec34, 1);

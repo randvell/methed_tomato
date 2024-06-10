@@ -1,11 +1,23 @@
+import {
+  TASK_TYPE_IMPORTANT,
+  TASK_TYPE_MINOR,
+  TASK_TYPE_STANDARD,
+} from './const.js';
 import { generateRandomID } from './helper.js';
 
 export class Task {
-  #name;
+  #importance;
+  #count = 0;
+  #text;
   #id;
 
-  constructor(name) {
-    this.#name = name;
+  constructor(text, importance = TASK_TYPE_STANDARD) {
+    if (new.target === Task) {
+      throw new Error('Cannot instantiate abstract class Task directly');
+    }
+
+    this.#text = text;
+    this.#importance = importance;
     this.#id = generateRandomID(8);
   }
 
@@ -13,11 +25,41 @@ export class Task {
     return this.#id;
   }
 
-  setName(name) {
-    this.#name = name;
+  setText(text) {
+    this.#text = text;
   }
 
-  getName() {
-    return this.#name;
+  getText() {
+    return this.#text;
+  }
+
+  getImportance() {
+    return this.#importance;
+  }
+
+  getCount() {
+    return this.#count;
+  }
+
+  addCount() {
+    this.#count++;
+  }
+}
+
+export class ImportantTask extends Task {
+  constructor(text) {
+    super(text, TASK_TYPE_IMPORTANT);
+  }
+}
+
+export class StandardTask extends Task {
+  constructor(text) {
+    super(text, TASK_TYPE_STANDARD);
+  }
+}
+
+export class MinorTask extends Task {
+  constructor(text) {
+    super(text, TASK_TYPE_MINOR);
   }
 }

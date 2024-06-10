@@ -1,5 +1,5 @@
 let count = 0;
-const imp = ['default', 'important', 'so-so'];
+const imp = ['standard', 'important', 'minor'];
 document
   .querySelector('.button-importance')
   .addEventListener('click', ({ target }) => {
@@ -11,6 +11,7 @@ document
     for (let i = 0; i < imp.length; i += 1) {
       if (count === i) {
         target.classList.add(imp[i]);
+        target.dataset.importance = imp[i];
       } else {
         target.classList.remove(imp[i]);
       }
