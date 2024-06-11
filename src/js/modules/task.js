@@ -1,9 +1,10 @@
+import { generateRandomID } from '../helper.js';
+
 import {
   TASK_TYPE_IMPORTANT,
   TASK_TYPE_MINOR,
   TASK_TYPE_STANDARD,
-} from './const.js';
-import { generateRandomID } from './helper.js';
+} from '../const.js';
 
 export class Task {
   #importance;
@@ -14,6 +15,9 @@ export class Task {
   constructor(text, importance = TASK_TYPE_STANDARD) {
     if (new.target === Task) {
       throw new Error('Cannot instantiate abstract class Task directly');
+    }
+    if (!text) {
+      throw Error('Введите описание задачи!');
     }
 
     this.#text = text;
@@ -63,3 +67,16 @@ export class MinorTask extends Task {
     super(text, TASK_TYPE_MINOR);
   }
 }
+
+export const getTaskModelByImportance = (importance) => {
+  switch (importance) {
+    case TASK_TYPE_MINOR:
+      return MinorTask;
+    case TASK_TYPE_STANDARD:
+      return StandardTask;
+    case TASK_TYPE_IMPORTANT:
+      return ImportantTask;
+    default:
+      throw new Error('Unknown task type: ' + importance);
+  }
+};

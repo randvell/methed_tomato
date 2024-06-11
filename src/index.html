@@ -41,10 +41,18 @@
               <p class="window__panel-task-text">Томат 2</p>
             </div>
             <div class="window__body">
-              <p class="window__timer-text">25:00</p>
+              <time
+              id="tomato-timer"
+              tabindex="0"
+              class="window__timer-text"
+            >00:00</time>
               <div class="window__buttons">
-                <button class="button button-primary">Старт</button>
-                <button class="button button-secondary hidden">Стоп</button>
+                <button id="btn-start" class="button button-primary">
+                  Старт
+                </button>
+                <button id="btn-stop" class="button button-secondary hidden">
+                  Стоп
+                </button>
               </div>
             </div>
             <form class="task-form" action="submit">
@@ -55,9 +63,15 @@
                 id="task-name"
                 placeholder="название задачи"
               />
+              <input
+                type="hidden"
+                name="task-importance"
+                id="task-importance"
+                value="standard"
+              />
               <button
                 type="button"
-                class="button button-importance default"
+                class="button button-importance standard"
                 aria-label="Указать важность"
               ></button>
               <button
@@ -72,33 +86,6 @@
             <div class="tasks">
               <p class="tasks__title">Задачи:</p>
               <ul class="tasks__list">
-                <li class="tasks__item important">
-                  <span class="count-number">1</span>
-                  <button class="tasks__text tasks__text_active">
-                    Сверстать сайт
-                  </button>
-                  <button class="tasks__button"></button>
-                  <!-- popup menu -->
-                  <div class="popup popup_active">
-                    <button class="popup__button popup__edit-button">
-                      Редактировать
-                    </button>
-                    <button class="popup__button popup__delete-button">
-                      Удалить
-                    </button>
-                  </div>
-                </li>
-                <li class="tasks__item minor">
-                  <span class="count-number">1</span>
-                  <button class="tasks__text">Оплатить налоги</button>
-                  <button class="tasks__button"></button>
-                  <!-- popup menu -->
-                </li>
-                <li class="tasks__item standard">
-                  <span class="count-number">3</span>
-                  <button class="tasks__text">Проверить валидность</button>
-                  <button class="tasks__button"></button>
-                </li>
               </ul>
               <p class="tasks__deadline">1&nbsp;час 30&nbsp;мин</p>
             </div>

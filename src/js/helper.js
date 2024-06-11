@@ -10,3 +10,19 @@ export const generateRandomID = (length) => {
 
   return result;
 };
+
+export const prepareTimeString = (seconds) => {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  let timeString = '';
+
+  if (hours !== 0) {
+    timeString += hours + ' час ';
+  }
+
+  if (minutes !== 0) {
+    timeString += 'и ' + minutes + ' мин';
+  }
+
+  return timeString.trim();
+};

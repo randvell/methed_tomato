@@ -1,17 +1,8 @@
-import './importance.js';
-import './counter.js';
-import { Timer } from './timer.js';
-import { ImportantTask, StandardTask } from './task.js';
+import { RenderTomato } from './mvc/view.js';
+import { ModelTomato } from './mvc/model.js';
+import { ControllerTomato } from './mvc/controller.js';
 
-const timer = Timer.getInstance({ time: 2 });
-const taskStandard = new StandardTask('Test task');
-const taskImportant = new ImportantTask('Very important');
-
-timer.add(taskStandard).add(taskImportant);
-timer.setActiveTask(taskImportant.getId());
-
-// Специально пока оставил возможность запуска несколько раз,
-// чтобы показать увеличение паузы
-timer.startTask();
-timer.startTask();
-timer.startTask();
+const model = ModelTomato.getInstance();
+const controller = ControllerTomato.getInstance(model);
+const view = new RenderTomato(document.querySelector('.main'), controller);
+view.render();
