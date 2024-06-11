@@ -79,27 +79,35 @@ export class ModelTomato {
     throw Error('Передан некорректный ID задачи: "' + taskId + '"');
   }
 
-  startTask() {
-    if (!this.#activeTask) {
-      throw Error('Нет активной задачи');
-    }
+  // startTask() {
+  //   if (!this.#activeTask) {
+  //     throw Error('Нет активной задачи');
+  //   }
 
-    const taskTimeout = () => {
-      console.log('Время прошло, счетчик увеличен');
-      this.#counter.addCount();
-      if (this.#counter.getCount() % 3 === 0) {
-        this.setPause(this.#bigPause);
-      } else {
-        this.setPause(this.#pause);
-      }
-    };
+  //   const taskTimeout = () => {
+  //     console.log('Время прошло, счетчик увеличен');
+  //     this.#counter.addCount();
+  //     if (this.#counter.getCount() % 3 === 0) {
+  //       this.setPause(this.#bigPause);
+  //     } else {
+  //       this.setPause(this.#pause);
+  //     }
+  //   };
 
-    setTimeout(taskTimeout, this.#time * 1000);
-    return this;
+  //   setTimeout(taskTimeout, this.#time * 1000);
+  //   return this;
+  // }
+
+  addCount() {
+    this.#counter.addCount();
   }
 
   setPause(seconds) {
     console.log('Установлена пауза', seconds);
     return this;
+  }
+
+  getTime() {
+    return this.#time;
   }
 }

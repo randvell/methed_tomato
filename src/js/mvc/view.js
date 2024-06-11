@@ -39,7 +39,10 @@ export class RenderTomato {
     this.#root = root;
     this.#controller = controller;
 
-    this.#timer = new Timer(root.querySelector('#tomato-timer'));
+    this.#timer = new Timer(
+      root.querySelector('#tomato-timer'),
+      this.handleTimerEnd.bind(this)
+    );
 
     this.#taskList = root.querySelector('.tasks__list');
 
@@ -114,13 +117,20 @@ export class RenderTomato {
     });
   }
 
+  handleTimerEnd() {
+    this.handleTimerStop();
+    this.#controller.addTaskCount();
+    this.#timer.setTimer(this.#controller.getTaskTime());
+    this.updateTasks();
+  }
+
   handleActiveTaskChange(e) {
     if (
       e.target.classList.contains('tasks__text') &&
       !e.target.classList.contains('tasks__text_active')
     ) {
       this.#controller.setActiveTask(e.target.dataset.taskId);
-      this.#timer.setTimer(25 * 60);
+      this.#timer.setTimer(this.#controller.getTaskTime());
       this.updateTasks();
     }
   }

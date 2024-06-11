@@ -46,7 +46,18 @@ export class ControllerTomato {
     return this.#model.getTasks();
   }
 
+  /**
+   * @return {Task|null}
+   */
   getActiveTask() {
     return this.#model.getActiveTask();
+  }
+
+  addTaskCount() {
+    this.getActiveTask()?.addCount();
+  }
+
+  getTaskTime() {
+    return this.#model.getTime();
   }
 }
